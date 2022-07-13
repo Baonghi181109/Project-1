@@ -29,31 +29,31 @@ let track = document.createElement('audio');
 let All_song = [{
 		name: "Em đã xa anh remix",
 		path: "music/1.mp3",
-		img: "images music/1.jpg",
+		img: "images/1.jpg",
 		singer: ""
 	},
 	{
 		name: "PtrpStudio - ชอบเธออะ",
 		path: "music/2.mp3",
-		img: "images music/2.jpg",
+		img: "images/2.jpg",
 		singer: ""
 	},
 	{
 		name: "Crazy Donkey - Morsmordre",
 		path: "music/3.mp3",
-		img: "images music/3.jpg",
+		img: "images/3.jpg",
 		singer: ""
 	},
     {
 		name: "Cháy phố - DJ Atom",
 		path: "music/4.mp3",
-		img: "images music/4.jpg",
+		img: "images/4.jpg",
 		singer: ""
 	},
     {
 		name: "Dschinghis Khan - Moskau",
 		path: "music/5.mp3",
-		img: "images music/5.jpg",
+		img: "images/5.jpg",
 		singer: ""
 	}
 ];
