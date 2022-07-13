@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+  --clr-font: #111;
+  --clr-bacg: #fff;
+ 
+}
+.light {
+  --clr-font: #111;
+  --clr-bacg: #fff;
+
+}
+.dark {
+  --clr-font: #fff;
+  --clr-bacg: #111;
+ 
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--clr-bacg);
+  color: var(--clr-font);
+}
+
+.toggle-btn {
+  background: transparent;
+  cursor: pointer;
+  font-size: 2rem;
+  border: none;
+  color: var(--clr-font);
+  transition: all 0.5s;
+  margin-left: 1138px;
+}
+
+.toggle-btn:hover {
+  transform: rotate(360deg);
+}
+
+main {
+  margin: 0 auto;
+}
+
+
+
+#mi {
+  width: 120px;
+  height: 120px;
+}
+
+#novia {
+  width: 120px;
+  height: 120px;
+}
+
+#novio {
+  width: 120px;
+  height: 120px;
+}
+
+a:hover {
+  color: orange;
+}
+
+::selection {
+  color: red;
+}
+
+h1:hover {
+  color: green;
+}
+
+h4:hover {
+  color: blue;
+}
+* {
+  margin: 5px;
+}
+
