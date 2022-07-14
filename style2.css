@@ -19,6 +19,8 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -80,3 +82,10 @@ h4:hover {
   margin: 5px;
 }
 
+h4{
+  margin-left: 10px;
+}
+
+#taga {
+  margin-left: 10px;
+}

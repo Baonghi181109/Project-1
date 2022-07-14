@@ -1,64 +1,54 @@
-const display = document.querySelector("#display");
-const buttons = document.querySelectorAll("button");
+// Select all required elements
+const wrapper = document.querySelector(".wrapper"),
+toast = wrapper.querySelector(".toast"),
+title = toast.querySelector("span"),
+subTitle = toast.querySelector("p"),
+wifiIcon = toast.querySelector(".icon"),
+closeIcon = toast.querySelector(".close-icon");
 
-buttons.forEach((item) => {
-  item.onclick = () => {
-    if (item.id == "clear") {
-      display.innerText = "";
-    } else if (item.id == "backspace") {
-      let string = display.innerText.toString();
-      display.innerText = string.substr(0, string.length - 1);
-    } else if (display.innerText != "" && item.id == "equal") {
-      display . innerText  =  eval ( display . innerText ) ;
-    } else if (display.innerText == "" && item.id == "equal") {
-      display.innerText = "Empty!";
-      setTimeout(() => (display.innerText = ""), 2000);
-    } else {
-      display . innerText  +=  item . id ;
+window.onload = ()=>{
+    function ajax(){
+        let xhr = new XMLHttpRequest(); //creating new XML object
+        xhr.open("GET", "https://jsonplaceholder.typicode.com/posts", true);       //send get request on this URL
+        xhr.onload = ()=>{        //once ajax loaded
+            // if ajax status is equal to 200 or less than 300 user is getting data
+            // or if response is 200 means user is online
+            if(xhr.status == 200 && xhr.status < 300){
+                toast.classList.remove("offline");
+                title.innerText = "You're online now";
+                subTitle.innerText = "Hurray! Internet is connected.";
+                wifiIcon.innerHTML = '<i class="uil uil-wifi"></i>';
+                closeIcon.onclick = ()=>{            
+                    wrapper.classList.add("hide");           //hide toast notification onclick
+                }
+                setTimeout(()=>{                                   //hide notification auto under 5seconds
+                    wrapper.classList.add("hide");            
+                }, 5000);
+            }else{
+                offline();                         
+            }                   //calling offline function if status is not equal to 200 or not  less than 300
+        }
+        xhr.onerror = ()=>{
+            offline();                       //calling offline function if the passed url is not correct
+        }                        
+        xhr.send();                              //sending get request to the passed url  
+    }    
+    
+     
+
+    function offline(){                 //functions for offline
+        wrapper.classList.remove("hide");
+        toast.classList.add("offline");
+        title.innerText = "You're offline now";
+        subTitle.innerText = "Opps! Internet is disconnected.";
+        wifiIcon.innerHTML = '<i class="uil uil-wifi-slash"></i>';
     }
-  } ;
-} ) ;
 
-const themeToggleBtn = document.querySelector(".theme-toggler");
-const calculator = document.querySelector(".calculator");
-const toggleIcon = document.querySelector(".toggler-icon");
-let isDark = true;
-themeToggleBtn.onclick = () => {
-  calculator.classList.toggle("dark");
-  themeToggleBtn.classList.toggle("active");
-  isDark = !isDark;
-} ;
-
-
-const buttonShows = document.querySelectorAll('.control button')
-buttonShows.forEach((btn) => {
-	btn.addEventListener('click', (e) => {
-		createToast(e.target.getAttribute('class'))
-	})
-})
-
-const toasts = {
-	success: {
-		icon: '<i class="fas fa-check-circle"></i>',
-		msg: 'Bài làm đã được gửi thành công !',
-	},
+    setInterval(()=>{                 //this setInterval function call ajax frequently after 100ms
+        ajax();
+    }, 100);
 }
 
-function createToast(status) {
-	let toast = document.createElement('div')
-	toast.className = `toast ${status}`
 
-	toast.innerHTML = `
-    ${toasts[status].icon}
-    <span class="msg">${toasts[status].msg}</span>
-    <span class="countdown"></span>
-    `
-	document.querySelector('#toasts').appendChild(toast)
 
-	setTimeout(() => {
-		toast.style.animation = 'hide_slide 1s ease forwards'
-	}, 4000)
-	setTimeout(() => {
-		toast.remove()
-	}, 6000)
-}
+

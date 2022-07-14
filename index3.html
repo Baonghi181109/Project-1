@@ -1,48 +1,70 @@
 <!DOCTYPE html>
-<html>
-   <head>
-      <title>Music player</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link rel="stylesheet" type="text/css" href="style3.css">
-   </head>
-   <body>
-      <div class="main">
-         <p id="logo"><i class="fa fa-music"></i>Music</p>
-         <!--- left part --->
-         <div class="left">
-            <!--- song img --->
-            <img id="track_image">
-            <div class="volume">
-               <p id="volume_show">90</p>
-               <i class="fa fa-volume-up" aria-hidden="true" onclick="mute_sound()" id="volume_icon"></i>
-               <input type="range" min="0" max="100" value="90" onchange="volume_change()" id="volume">  
-            </div>
-         </div>
-         <!--- right part --->
-         <div class="right">
-            <div class="show_song_no">
-               <p id="present">1</p>
-               <p>/</p>
-               <p id="total">5</p> 
-            </div>
-            <!--- song title & artist name --->
-            <p id="title">title.mp3</p>
-            <p id="artist">Artist name</p>
-            <!--- middle part --->
-            <div class="middle">
-               <button onclick="previous_song()" id="pre"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
-               <button onclick="justplay()" id="play"><i class="fa fa-play" aria-hidden="true"></i></button>
-               <button onclick="next_song()" id="next"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
-            </div>
-            <!--- song duration part --->
-            <div class="duration">
-               <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="change_duration()">
-            </div>
-            <button id="auto" onclick="autoplay_switch()">Auto play <i class="fa fa-circle-o-notch" aria-hidden="true"></i></button>
-         </div>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Music Player</title>
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style3.css" />
+  </head>
+  <body>
+    <div class="music-player">
+      <button id="playlist">
+        <i class="fa-solid fa-angle-down"></i>
+      </button>
+      <img id="song-image" src="1.jpg" />
+      <div class="song-details">
+        <p id="song-name">Make Me Move</p>
+        <p id="song-artist">Culture Code</p>
       </div>
-      <!--- Add javascript file --->
-      <script src="script.js"></script>
-   </body>
+      <div class="player-options">
+        <button id="shuffle">
+          <i class="fa-solid fa-shuffle"></i>
+        </button>
+        <button id="prev">
+          <i class="fa-solid fa-backward-step"></i>
+        </button>
+        <button id="play">
+          <i class="fa-solid fa-play"></i>
+        </button>
+        <button id="pause" class="hide">
+          <i class="fa-solid fa-pause"></i>
+        </button>
+        <button id="next">
+          <i class="fa-solid fa-forward-step"></i>
+        </button>
+        <button id="repeat">
+          <i class="fa-solid fa-repeat"></i>
+        </button>
+      </div>
+      <audio id="audio" preload="metadata"></audio>
+      <div id="progress-bar">
+        <div id="current-progress"></div>
+      </div>
+      <div class="time-container">
+        <span id="current-time">0:00</span>
+        <span id="max-duration">0:00</span>
+      </div>
+      <div id="playlist-container" class="hide">
+        <button id="close-button">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <ul id="playlist-songs"></ul>
+      </div>
+    </div>
+    <!-- Script -->
+    <script src="script.js"></script>
+  </body>
 </html>
