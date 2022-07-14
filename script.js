@@ -54,6 +54,36 @@ const songsList = [
     artist: "Dschinghis Khan",
     image: "images/5.jpg",
   },
+  {
+    name: "HƯỚNG DƯƠNG",
+    link: "music/6.mp3",
+    artist: "CHANGG",
+    image: "images/6.jpg",
+  },
+  {
+    name: "CÀ PHÊ",
+    link: "music/7.mp3",
+    artist: "MIN",
+    image: "images/7.jpg",
+  },
+  {
+    name: "Bỏ Em Vào Balo (Lofi Ver.)",
+    link: "music/8.mp3",
+    artist: "Tân Trần x Freak D",
+    image: "images/8.jpg",
+  },
+  {
+    name: "STAY",
+    link: "music/9.mp3",
+    artist: "The Kid LAROI, Justin Bieber",
+    image: "images/9.jpg",
+  },
+  {
+    name: "Anh Đánh Rơi Người Yêu Này",
+    link: "music/10.mp3",
+    artist: "Andiez ft. AMEE",
+    image: "images/10.jpg",
+  },
 ];
 
 //events object
