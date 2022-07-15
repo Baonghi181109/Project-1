@@ -7,7 +7,7 @@
 
 body {
   height: 100vh;
-  background-image: linear-gradient( to bottom right, rgba(79,51,176,1.0),rgba(210,53,165));
+  background-image: linear-gradient(to right, #7914cc, #b12b2b);
   background-repeat: repeat;
   font-family: sans-serif;
 }

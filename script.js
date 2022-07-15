@@ -84,6 +84,66 @@ const songsList = [
     artist: "Andiez ft. AMEE",
     image: "images/10.jpg",
   },
+  {
+    name: "Ascence - About You",
+    link: "music/11.mp3",
+    artist: "NCS",
+    image: "images/11.jpg",
+  },
+  {
+    name: "BEAUZ & JVNA - Crazy",
+    link: "music/12.mp3",
+    artist: "NCS",
+    image: "images/12.jpg",
+  },
+  {
+    name: "Gác lại âu lo",
+    link: "music/13.mp3",
+    artist: "Da LAB ft. Miu Lê",
+    image: "images/13.jpg",
+  },
+  {
+    name: "Lost Sky - Vision",
+    link: "music/14.mp3",
+    artist: "NCS",
+    image: "images/14.jpg",
+  },
+  {
+    name: "TRÊN TÌNH BẠN DƯỚI TÌNH YÊU",
+    link: "music/15.mp3",
+    artist: "MIN",
+    image: "images/15.jpg",
+  },
+  {
+    name: "Neoni - Haunted House",
+    link: "music/16.mp3",
+    artist: "NCS",
+    image: "images/16.jpg",
+  },
+  {
+    name: "PHẢI CHĂNG EM ĐÃ YÊU",
+    link: "music/17.mp3",
+    artist: "JUKY SAN ft. REDT",
+    image: "images/17.jpg",
+  },
+  {
+    name: "Tinoma - Find You",
+    link: "music/18.mp3",
+    artist: "NCS",
+    image: "images/18.jpg",
+  },
+  {
+    name: "Unknown Brain - Faceless",
+    link: "music/19.mp3",
+    artist: "NCS",
+    image: "images/19.jpg",
+  },
+  {
+    name: "Unknown Brain - Say Goodbye",
+    link: "music/20.mp3",
+    artist: "NCS",
+    image: "images/20.jpg",
+  },
 ];
 
 //events object
