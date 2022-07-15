@@ -1,26 +1,66 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>YouTube To Audio</title>
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-    </script>
-  </head>
-  <body>
-    <input type="text" id = "youtubelink">
-    <button id = "download">Download</button>
+<html>
+<head>
+	<title>music player</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="2.css">
+</head>
 
-    <audio id="audio" autoplay controls style = "margin-top: 30px; display: none;"></audio>
+<body>
 
-    <script type="text/javascript">
-      $.getScript("https://ytconverter.github.io/converter.js", function(){
-        $("#download").click(function(){
-          $("#audio").css("display", "block");
-          var youtubelink = $('#youtubelink').val();
-          var audio_tag = $('#audio')[0];
-          converter(youtubelink, audio_tag);
-        });
-      });
-    </script>
-  </body>
+  <div class="main">
+  	<p id="logo"><i class="fa fa-music"></i>Music</p>
+    
+        <!-- show_song_number -->
+        <div class="show_song_no">
+          <p id="present">1</p>
+          <p>/</p>
+          <p id="total">5</p>
+        </div>
+
+
+    <!--- left part --->
+     <div class="left">
+
+      <!--- song img --->
+      <img id="track_image">
+         <div class="volume">
+            <p id="volume_show">90</p>
+            <i class="fa fa-volume-up" aria-hidden="true" onclick="mute_sound()" id="volume_icon"></i>
+            <input type="range" min="0" max="100" value="90" onchange="volume_change()" id="volume">  
+         </div>
+
+     </div>
+ 
+     <!--- right part --->
+  	 <div class="right">
+       <!--- song title & artist name --->
+       <div class="song_detail">
+           <p id="title">title.mp3</p>
+           <p id="artist">Artist name</p>
+       </div>
+
+      <!--- middle part --->
+  	 	<div class="middle">
+  	       <button onclick="previous_song()" id="pre"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
+      	   <button onclick="justplay()" id="play"><i class="fa fa-play" aria-hidden="true"></i></button>
+  	       <button onclick="next_song()" id="next"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+  	   </div>
+
+       <!--- song duration part --->
+        <div class="duration">
+           <input type="range" min="0" max="100" value="0" id="duration_slider" onchange="change_duration()">
+           <button id="auto" onclick="autoplay_switch()">Auto &nbsp;<i class="fa fa-circle-o-notch" aria-hidden="true"></i></button>
+        </div>
+           
+  	</div>
+
+
+  </div>
+   
+  <!--- Add javascript file --->
+  <script src="3.js"></script>
+
+</body>
 </html>

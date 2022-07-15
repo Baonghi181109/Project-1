@@ -1,358 +1,413 @@
-const prevButton = document.getElementById("prev");
-const nextButton = document.getElementById("next");
-const repeatButton = document.getElementById("repeat");
-const shuffleButton = document.getElementById("shuffle");
-const audio = document.getElementById("audio");
-const songImage = document.getElementById("song-image");
-const songName = document.getElementById("song-name");
-const songArtist = document.getElementById("song-artist");
-const pauseButton = document.getElementById("pause");
-const playButton = document.getElementById("play");
-const playlistButton = document.getElementById("playlist");
-const maxDuration = document.getElementById("max-duration");
-const currentTimeRef = document.getElementById("current-time");
-const progressBar = document.getElementById("progress-bar");
-const playlistContainer = document.getElementById("playlist-container");
-const closeButton = document.getElementById("close-button");
-const playlistSongs = document.getElementById("playlist-songs");
-const currentProgress = document.getElementById("current-progress");
-
-//index for songs
-let index;
-
-//initially loop=true
-let loop = true;
-
-const songsList = [
+const data = [
   {
-    name: "Em đã xa anh",
-    link: "music/1.mp3",
-    artist: "Như Việt",
-    image: "images/1.jpg",
+    song: "Mama Boy",
+    singer: "Amme",
+    avatar: "images/1.jpg",
+    mp3: "music/1.mp3",
   },
   {
-    name: "PtrpStudio - ชอบเธออะ",
-    link: "music/2.mp3",
-    artist: "Sakarin",
-    image: "images/2.jpg",
+    song: "Em đã xa anh",
+    singer: "Như Việt",
+    avatar: "images/2.jpg",
+    mp3: "music/2.mp3",
   },
   {
-    name: "Morsmordre",
-    link: "music/3.mp3",
-    artist: "Crazy Donkey",
-    image: "images/3.jpg",
+    song: "PtrpStudio - ชอบเธออะ",
+    singer: "Sakarin",
+    avatar: "images/3.jpg",
+    mp3: "music/3.mp3",
   },
   {
-    name: "Cháy Phố Remix",
-    link: "music/4.mp3",
-    artist: "DJ Atom",
-    image: "images/4.jpg",
+    song: "Morsmordre",
+    singer: "Crazy Donkey",
+    avatar: "images/4.jpg",
+    mp3: "music/4.mp3",
   },
   {
-    name: "Moskau",
-    link: "music/5.mp3",
-    artist: "Dschinghis Khan",
-    image: "images/5.jpg",
+    song: "Cháy Phố Remix",
+    singer: "DJ Atom",
+    avatar: "images/5.jpg",
+    mp3: "music/5.mp3",
   },
   {
-    name: "HƯỚNG DƯƠNG",
-    link: "music/6.mp3",
-    artist: "CHANGG",
-    image: "images/6.jpg",
+    song: "Moskau",
+    singer: "Dschinghis khan",
+    avatar: "images/6.jpg",
+    mp3: "music/6.mp3",
   },
   {
-    name: "CÀ PHÊ",
-    link: "music/7.mp3",
-    artist: "MIN",
-    image: "images/7.jpg",
+    song: "HƯỚNG DƯƠNG",
+    singer: "CHANGG",
+    avatar: "images/7.jpg",
+    mp3: "music/7.mp3",
   },
   {
-    name: "Bỏ Em Vào Balo (Lofi Ver.)",
-    link: "music/8.mp3",
-    artist: "Tân Trần x Freak D",
-    image: "images/8.jpg",
+    song: "CÀ PHÊ",
+    singer: "MIN",
+    avatar: "images/8.jpg",
+    mp3: "music/8.mp3",
   },
   {
-    name: "STAY",
-    link: "music/9.mp3",
-    artist: "The Kid LAROI, Justin Bieber",
-    image: "images/9.jpg",
+    song: "Bỏ Em Vào Balo (Lofi Ver.)",
+    singer: "Tân Trần x Freak D",
+    avatar: "images/9.jpg",
+    mp3: "music/9.mp3",
   },
   {
-    name: "Anh Đánh Rơi Người Yêu Này",
-    link: "music/10.mp3",
-    artist: "Andiez ft. AMEE",
-    image: "images/10.jpg",
+    song: "STAY",
+    singer: "The Kid LAROI, Justin Bieber",
+    avatar: "images/10.jpg",
+    mp3: "music/10.mp3",
   },
   {
-    name: "Ascence - About You",
-    link: "music/11.mp3",
-    artist: "NCS",
-    image: "images/11.jpg",
+    song: "Anh Đánh Rơi Người Yêu Này",
+    singer: "Andiez ft. AMEE",
+    avatar: "images/11.jpg",
+    mp3: "music/11.mp3",
   },
   {
-    name: "BEAUZ & JVNA - Crazy",
-    link: "music/12.mp3",
-    artist: "NCS",
-    image: "images/12.jpg",
+    song: "Ascence - About You",
+    singer: "NCS",
+    avatar: "images/12.jpg",
+    mp3: "music/12.mp3",
   },
   {
-    name: "Gác lại âu lo",
-    link: "music/13.mp3",
-    artist: "Da LAB ft. Miu Lê",
-    image: "images/13.jpg",
+    song: "BEAUZ & JVNA - Crazy",
+    singer: "NCS",
+    avatar: "images/13.jpg",
+    mp3: "music/13.mp3",
   },
   {
-    name: "Lost Sky - Vision",
-    link: "music/14.mp3",
-    artist: "NCS",
-    image: "images/14.jpg",
+    song: "Gác lại âu lo",
+    singer: "Da LAB ft. Miu Lê",
+    avatar: "images/14.jpg",
+    mp3: "music/14.mp3",
   },
   {
-    name: "TRÊN TÌNH BẠN DƯỚI TÌNH YÊU",
-    link: "music/15.mp3",
-    artist: "MIN",
-    image: "images/15.jpg",
+    song: "Lost Sky - Vision",
+    singer: "NCS",
+    avatar: "images/15.jpg",
+    mp3: "music/15.mp3",
   },
   {
-    name: "Neoni - Haunted House",
-    link: "music/16.mp3",
-    artist: "NCS",
-    image: "images/16.jpg",
+    song: "TRÊN TÌNH BẠN DƯỚI TÌNH YÊU",
+    singer: "MIN",
+    avatar: "images/16.jpg",
+    mp3: "music/16.mp3",
   },
   {
-    name: "PHẢI CHĂNG EM ĐÃ YÊU",
-    link: "music/17.mp3",
-    artist: "JUKY SAN ft. REDT",
-    image: "images/17.jpg",
+    song: "Neoni - Haunted House",
+    singer: "NCS",
+    avatar: "images/17.jpg",
+    mp3: "music/17.mp3",
   },
   {
-    name: "Tinoma - Find You",
-    link: "music/18.mp3",
-    artist: "NCS",
-    image: "images/18.jpg",
+    song: "PHẢI CHĂNG EM ĐÃ YÊU",
+    singer: "JUKY SAN ft. REDT",
+    avatar: "images/18.jpg",
+    mp3: "music/18.mp3",
   },
   {
-    name: "Unknown Brain - Faceless",
-    link: "music/19.mp3",
-    artist: "NCS",
-    image: "images/19.jpg",
+    song: "Tinoma - Find You",
+    singer: "NCS",
+    avatar: "images/19.jpg",
+    mp3: "music/19.mp3",
   },
   {
-    name: "Unknown Brain - Say Goodbye",
-    link: "music/20.mp3",
-    artist: "NCS",
-    image: "images/20.jpg",
+    song: "Unknown Brain - Faceless",
+    singer: "NCS",
+    avatar: "images/20.jpg",
+    mp3: "music/20.mp3",
+  },
+  {
+    song: "Unknown Brain - Say Goodbye",
+    singer: "NCS",
+    avatar: "images/21.jpg",
+    mp3: "music/21.mp3",
   },
 ];
 
-//events object
-let events = {
-  mouse: {
-    click: "click",
-  },
-  touch: {
-    click: "touchstart",
-  },
-};
+//1. thêm số 0 vào đằng trước các số 0 đến 9
+function addZero(number){
+  if(number >= 0 && number <= 9) return `0${number}`
+  else return number
+}
 
-let deviceType = "";
-
-//Detect touch device
-
-const isTouchDevice = () => {
-  try {
-    //We try to create TouchEvent(it would fail for desktops and throw error)
-    document.createEvent("TouchEvent");
-    deviceType = "touch";
-    return true;
-  } catch (e) {
-    deviceType = "mouse";
-    return false;
+//2. chuyển đổi giây thành phút và format lại 
+function convertSecondsToMinutes(timeType, element = ''){
+  let seconds = 0
+  if(timeType === 'currentTime'){
+      seconds = element.currentTime.toFixed(0)
+  }else if(timeType === 'duration'){
+      seconds = element.duration.toFixed(0)
+  }else{
+      seconds = timeType.toFixed(0)
   }
-};
+  const minutes = Math.trunc(seconds / 60)
+  return  `${addZero(minutes)}:${addZero(seconds - minutes * 60)}`
+}
 
-//Format time (convert ms to seconds, minutes and add 0 id less than 10)
-const timeFormatter = (timeInput) => {
-  let minute = Math.floor(timeInput / 60);
-  minute = minute < 10 ? "0" + minute : minute;
-  let second = Math.floor(timeInput % 60);
-  second = second < 10 ? "0" + second : second;
-  return `${minute}:${second}`;
-};
+//3. tối ưu việc random để 1 bài hát không lặp lại cho đến đã phát hết danh sách bài hát
+let random = []
+function randomOptimization(arr){
+  const max = arr.length
+  let numberRandom = Math.floor(Math.random() * max)
+  
+  if(random.length >= arr.length){
+      random = []
+  } 
+      
 
-//set song
-const setSong = (arrayIndex) => {
-  //this extracts all the variables from the object
-  let { name, link, artist, image } = songsList[arrayIndex];
-  audio.src = link;
-  songName.innerHTML = name;
-  songArtist.innerHTML = artist;
-  songImage.src = image;
-  //display duration when metadata loads
-  audio.onloadedmetadata = () => {
-    maxDuration.innerText = timeFormatter(audio.duration);
-  };
-};
-
-//play song
-const playAudio = () => {
-  audio.play();
-  pauseButton.classList.remove("hide");
-  playButton.classList.add("hide");
-};
-
-//repeat button
-repeatButton.addEventListener("click", () => {
-  if (repeatButton.classList.contains("active")) {
-    repeatButton.classList.remove("active");
-    audio.loop = false;
-    console.log("repeat off");
-  } else {
-    repeatButton.classList.add("active");
-    audio.loop = true;
-    console.log("repeat on");
+  while(random.find(num => numberRandom == num) !== undefined){
+      numberRandom = Math.floor(Math.random() * max)
   }
-});
 
-//Next song
-const nextSong = () => {
-  //if loop is true then continue in normal order
-  if (loop) {
-    if (index == songsList.length - 1) {
-      //If last song is being played
-      index = 0;
-    } else {
-      index += 1;
-    }
-    setSong(index);
+  random.push(numberRandom)
+  return numberRandom
+}
 
-    playAudio();
-  } else {
-    //else find a random index and play that song
-    let randIndex = Math.floor(Math.random() * songsList.length);
-    console.log(randIndex);
-    setSong(randIndex);
-    playAudio();
+//4 lấy ra phần trăm chiều ngang của chuột và timeline
+function percentTimeLine(e){
+  let percent = ''
+  const left = timeLine.offsetLeft
+  const width = timeLine.offsetWidth
+  if(clickDown && e.clientX >= left && e.clientX <= left + width){
+      percent = (e.clientX - left) / width
+  }else if(clickDown && e.clientX < left){
+      percent = 0
+  }else if(clickDown && e.clientX > left + width){
+      percent = 1
   }
-};
+  
+  return percent
+}
 
-//pause song
-const pauseAudio = () => {
-  audio.pause();
-  pauseButton.classList.add("hide");
-  playButton.classList.remove("hide");
-};
+//
+function intervalCurrent(){
+  playingTimeLeft.innerHTML = convertSecondsToMinutes('currentTime', document.querySelector('audio.active'))
+  circle.style.left = document.querySelector('audio.active').currentTime / document.querySelector('audio.active').duration * 100 + '%'
+  percentLine.style.width = document.querySelector('audio.active').currentTime / document.querySelector('audio.active').duration * 100 + '%'
+}
 
-//previous song ( you can't go back to a randomly played song)
-const previousSong = () => {
-  if (index > 0) {
-    pauseAudio();
-    index -= 1;
-  } else {
-    //if first song is being played
-    index = songsList.length - 1;
+const playList = document.getElementById('playlist')
+
+//5. render danh sách phát
+data.forEach((item, index) => {
+  playList.insertAdjacentHTML('beforeend', `
+  
+  <div class="item" data-index="${index}">
+  <audio class="audio${++index}" src="${item.mp3}"></audio>
+  <span class="item__number">${addZero(index)}</span>
+  <img src="${item.avatar}">
+  <span class="oi item__icon" data-glyph="caret-right"></span>
+  <div class="music">
+  <div class="item__song">${item.song}</div>
+  <div class="item__singer">${item.singer}</div>
+  </div>
+  <span class="item__time">00:00</span>
+  </div>
+  `)
+});
+
+//6. hiển thị thời gian bài hát của phần danh sách sau khi render xong
+document.querySelectorAll('audio').forEach(audio => {
+  audio.addEventListener('loadedmetadata', function(){
+      audio.parentElement.querySelector('.item__time').innerHTML = convertSecondsToMinutes('duration', audio)
+  })
+})
+
+
+const listAudio = document.querySelectorAll('audio')
+const listItem = document.querySelectorAll('.item')
+const playingImg = document.querySelector('#playing .thumbnail img')
+const thumbnail = document.querySelector('#playing .thumbnail')
+const playingSong = document.querySelector('#playing .song')
+const playingSinger = document.querySelector('#playing .singer')
+const playingTimeRight = document.querySelector('#playing .time .right')
+const playingTimeLeft = document.querySelector('#playing .time .left')
+const play = document.querySelector('.controls .play')
+const pause = document.querySelector('.controls .pause')
+const forWard = document.querySelector('.controls .forward')
+const backward = document.querySelector('.controls .backward')
+const timeLine = document.querySelector('#playing .time-line')
+const circle = timeLine.querySelector('.circle')
+const percentLine = timeLine.querySelector('.percent')
+const loop = document.querySelector('.controls .loop')
+const randomControl = document.querySelector('.controls .random')
+
+
+listItem[0].classList.add('active')
+listAudio[0].classList.add('active')
+
+let currentTime = ''
+
+//7. khi nhấn bài bài hát
+listItem.forEach(item => {
+  item.addEventListener('click', function(){
+
+      thumbnail.classList.remove('pause')
+      thumbnail.classList.remove('play')
+      
+      //6.1 hiệu ứng active 
+      document.querySelector('.item.active').classList.remove('active')
+      item.classList.add('active')
+
+      //6.2 dừng audio đang phát vào đặt thời gian về 0
+      document.querySelector('audio.active').pause()
+      document.querySelector('audio.active').currentTime = 0
+
+      //6.3 xóa, thêm class active cho audio
+      document.querySelector('audio.active').classList.remove('active')
+      item.querySelector('audio').classList.add('active')
+      
+      //6.4 hiệu ứng thay đổi ảnh, bài hát, ca sĩ, thời gian
+      playingImg.setAttribute('src', item.querySelector('img').getAttribute('src'))
+      playingSong.innerHTML = item.querySelector('.item__song').innerHTML
+      playingSinger.innerHTML = item.querySelector('.item__singer').innerHTML
+      playingTimeRight.innerHTML = item.querySelector('.item__time').innerHTML
+
+      //6.5 hiệu ứng cuộn, clearInterval, xóa class active của loop
+      item.scrollIntoView({behavior: "smooth", block: "center"})
+      clearInterval(currentTime)
+      loop.classList.remove('active')
+
+      //6.6 nếu random có active và index không có trong mảng random thì thêm index đó vào mảng random 
+      if(randomControl.classList.contains('active')){
+          const itemId = document.querySelector('.item.active').dataset.index
+          if(random.find(num => itemId == num) === undefined) random.push(itemId)
+      }
+      play.click()
+  })
+})
+
+//8. khi ấn play
+play.addEventListener('click', function(){
+  forWard.style.pointerEvents = 'all'
+
+  thumbnail.classList.remove('pause')
+  thumbnail.classList.add('play')
+
+  //8.1 hiệu ứng đổi sang pause
+  play.style.display = 'none'
+  pause.style.display = 'block'
+  
+  //8.2 phát audio đang active
+  document.querySelector('audio.active').play()
+  
+  //8.3 hiệu ứng thời giạn hiện tại của bài hát
+  currentTime =  setInterval(()=>{
+      intervalCurrent()
+  }, 100)
+
+  //8.4 khi audio active kết thúc
+  document.querySelector('audio.active').onended = function(){
+      clearInterval(currentTime)
+      
+      // nếu ấn chọn random
+      if(randomControl.classList.contains('active')){
+          listItem[randomOptimization(listItem)].click()
+      }
+      // nếu ấn chọn loop
+      else if(loop.classList.contains('active')){
+          play.click()
+      // mặc định phát bài tiếp theo
+      }else{
+          forWard.click()
+      }
   }
-  setSong(index);
-  playAudio();
-};
+  
 
-//next song when current song ends
-audio.onended = () => {
-  nextSong();
-};
+})
 
-//Shuffle songs
-shuffleButton.addEventListener("click", () => {
-  if (shuffleButton.classList.contains("active")) {
-    shuffleButton.classList.remove("active");
-    loop = true;
-    console.log("shuffle off");
-  } else {
-    shuffleButton.classList.add("active");
-    loop = false;
-    console.log("shuffle on");
+//9. khi ấn pause
+pause.addEventListener('click', function(){
+  pause.style.display = 'none'
+  play.style.display = 'block'
+
+  thumbnail.classList.remove('play')
+  thumbnail.classList.add('pause')
+
+  clearInterval(currentTime)
+  document.querySelector('audio.active').pause()
+})
+
+//10. khi ấn forWard
+forWard.addEventListener('click', function(){
+  const nextItem = document.querySelector('.item.active').nextElementSibling
+  if(nextItem){
+      nextItem.click()
+  }else{
+      pause.click()
+      this.style.pointerEvents = 'none'
   }
-});
+})
 
-//play button
-playButton.addEventListener("click", playAudio);
-
-//next button
-nextButton.addEventListener("click", nextSong);
-
-//pause button
-pauseButton.addEventListener("click", pauseAudio);
-
-//prev button
-prevButton.addEventListener("click", previousSong);
-
-//if user clicks on progress bar
-isTouchDevice();
-progressBar.addEventListener(events[deviceType].click, (event) => {
-  //start of progressBar
-  let coordStart = progressBar.getBoundingClientRect().left;
-  //mouse click position
-  let coordEnd = !isTouchDevice() ? event.clientX : event.touches[0].clientX;
-  let progress = (coordEnd - coordStart) / progressBar.offsetWidth;
-
-  //set width to progress
-  currentProgress.style.width = progress * 100 + "%";
-
-  //set time
-  audio.currentTime = progress * audio.duration;
-
-  //play
-  audio.play();
-  pauseButton.classList.remove("hide");
-  playButton.classList.add("hide");
-});
-
-//update progress every second
-setInterval(() => {
-  currentTimeRef.innerHTML = timeFormatter(audio.currentTime);
-  currentProgress.style.width =
-    (audio.currentTime / audio.duration.toFixed(3)) * 100 + "%";
-});
-
-//update time
-audio.addEventListener("timeupdate", () => {
-  currentTimeRef.innerText = timeFormatter(audio.currentTime);
-});
-
-//Creates playlist
-const initializePlaylist = () => {
-  for (let i in songsList) {
-    playlistSongs.innerHTML += `<li class='playlistSong' onclick='setSong(${i})'>
-            <div class="playlist-image-container">
-                <img src="${songsList[i].image}"/>
-            </div>
-            <div class="playlist-song-details">
-                <span id="playlist-song-name">
-                    ${songsList[i].name}
-                </span>
-                <span id="playlist-song-artist-album">
-                    ${songsList[i].artist}
-                </span>
-            </div>
-        </li>`;
+//11. khi ấn backWard
+backward.addEventListener('click', function(){
+  const prevItem = document.querySelector('.item.active').previousElementSibling
+  if(prevItem){
+      prevItem.click()
   }
-};
+})
 
-//display playlist
-playlistButton.addEventListener("click", () => {
-  playlistContainer.classList.remove("hide");
-});
+let clickDown = false
 
-//hide playlist
-closeButton.addEventListener("click", () => {
-  playlistContainer.classList.add("hide");
-});
+//12. hiệu ứng kéo thả time line
+window.addEventListener('mousedown', function(e){
+  if(e.target.matches('.circle') || e.target.matches('.time-line') || e.target.matches('.percent')){
+      clickDown = true
+      clearInterval(currentTime)
+  }
+})
 
-window.onload = () => {
-  //initially first song
-  index = 0;
-  setSong(index);
-  //create playlist
-  initializePlaylist();
-};
+window.addEventListener('mousemove', function(e){
+  this.document.body.style.userSelect = 'none'
+
+  let percent = percentTimeLine(e)
+
+  if(clickDown){
+      clearInterval(currentTime)
+      playingTimeLeft.innerHTML =  convertSecondsToMinutes(percent * document.querySelector('audio.active').duration)
+      circle.style.left = percent * 100 + '%'
+      percentLine.style.width = percent * 100 + '%'
+  }
+  
+})
+
+window.addEventListener('mouseup', function(e){
+  if(clickDown){
+      document.querySelector('audio.active').currentTime = percentTimeLine(e) * document.querySelector('audio.active').duration
+      currentTime =  setInterval(()=>{
+          intervalCurrent()
+      }, 100)
+      clickDown = false
+  }
+})
+
+timeLine.addEventListener('click', function(){
+  intervalCurrent()
+})
+
+
+//13. khi ấn vào loop
+loop.addEventListener('click', function(){
+  randomControl.classList.remove('active')
+  this.classList.toggle('active')
+})
+
+//14. khi ấn vào random
+randomControl.addEventListener('click', function(){
+  loop.classList.remove('active')
+  this.classList.toggle('active')
+  random = []
+  if(this.classList.contains('active')){
+      random.push(document.querySelector('.item.active').dataset.index)
+  }
+})
+
+thumbnail.addEventListener('animationend', function(e){
+  if(e.animationName === 'rotatePause'){
+      thumbnail.classList.remove('pause')
+      this.style.borderRadius = '20px'
+  }
+})
