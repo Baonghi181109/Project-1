@@ -125,6 +125,60 @@ const data = [
     avatar: "images/21.jpg",
     mp3: "music/21.mp3",
   },
+  {
+    song: "VÌ MẸ ANH BẮT CHIA TAY",
+    singer: "MIU LÊ x KARIK x CHÂU ĐĂNG KHOA",
+    avatar: "images/22.jpg",
+    mp3: "music/22.mp3",
+  },
+  {
+    song: "Bài Này Chill Phết",
+    singer: "Đen ft. MIN",
+    avatar: "images/23.jpg",
+    mp3: "music/23.mp3",
+  },
+  {
+    song: "Ex's Hate Me",
+    singer: "B Ray x Masew (Ft AMEE)",
+    avatar: "images/24.jpg",
+    mp3: "music/24.mp3",
+  },
+  {
+    song: "LẦN HẸN HÒ ĐẦU TIÊN",
+    singer: "HUYỀN TÂM MÔN",
+    avatar: "images/25.jpg",
+    mp3: "music/25.mp3",
+  },
+  {
+    song: "Lời Yêu Ngây Dại",
+    singer: "Kha",
+    avatar: "images/26.jpg",
+    mp3: "music/26.mp3",
+  },
+  {
+    song: "VÌ YÊU CỨ ĐÂM ĐẦU",
+    singer: "MIN x ĐEN VÂU x JUSTATEE",
+    avatar: "images/27.jpg",
+    mp3: "music/27.mp3",
+  },
+  {
+    song: "Shay Nắnggg",
+    singer: " AMEE x OBITO x HỨA KIM TUYỀN x SKIN AQUA TONE UP UV",
+    avatar: "images/28.jpg",
+    mp3: "music/28.mp3",
+  },
+  {
+    song: "TÌNH BẠN DIỆU KỲ",
+    singer: "AMEE x RICKY STAR x LĂNG LD",
+    avatar: "images/29.jpg",
+    mp3: "music/29.mp3",
+  },
+  {
+    song: "Never Gonna Give You Up",
+    singer: "Rick Astley",
+    avatar: "images/30.jpg",
+    mp3: "music/30.mp3",
+  },
 ];
 
 //1. thêm số 0 vào đằng trước các số 0 đến 9
