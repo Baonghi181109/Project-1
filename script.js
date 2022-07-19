@@ -179,6 +179,18 @@ const data = [
     avatar: "images/30.jpg",
     mp3: "music/30.mp3",
   },
+  {
+    song: "Baby Can U Kiss Me Remix",
+    singer: "Orinn & SimonC",
+    avatar: "images/31.jpg",
+    mp3: "music/31.mp3",
+  },
+  {
+    song: "Duyên Duyên Số Số Remix",
+    singer: "Du Uyên ft Hương Ly",
+    avatar: "images/32.jpg",
+    mp3: "music/32.mp3",
+  },
 ];
 
 //1. thêm số 0 vào đằng trước các số 0 đến 9

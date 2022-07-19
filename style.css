@@ -97,6 +97,14 @@
     background: #efefef;
 }
 
+#holayo:hover{
+    color:rgb(128, 109, 0);
+}
+
+#holayo{
+    margin-left: 5px;
+}
+
 #holaminovia2 {
     margin-left: 5px;
     line-height: 31px;
@@ -108,7 +116,7 @@
 
 #holaminovio2 {
     margin-left: 5px;
-    line-height: 25px;
+    line-height: 23px;
 }
 
 #holaminovio2:hover{
