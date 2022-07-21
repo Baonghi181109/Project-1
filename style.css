@@ -97,12 +97,32 @@
     background: #efefef;
 }
 
+#appchat {
+    border-radius: 0;
+    height: 45px;
+    width: 90px;
+    background-color:rgb(22, 226, 196);
+}
+
+#app{
+    font-size: 19px;
+}
+
+#holami{
+    line-height: 33px;
+}
+
+#holami:hover{
+    color:rgb(0, 168, 128);
+}
+
 #holayo:hover{
     color:rgb(128, 109, 0);
 }
 
 #holayo{
     margin-left: 5px;
+    line-height: 33px;
 }
 
 #holaminovia2 {
@@ -125,7 +145,7 @@
 
 #holaminovio {
     margin-left: 5px;
-    line-height: 30px;
+    line-height: 33px;
 }
 
 #holaminovio:hover{
