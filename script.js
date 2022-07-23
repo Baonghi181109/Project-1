@@ -191,6 +191,54 @@ const data = [
     avatar: "images/32.jpg",
     mp3: "music/32.mp3",
   },
+  {
+    song: "Anh Sẽ Đón Em Remix",
+    singer: "Nguyên ft. Trang",
+    avatar: "images/33.jpg",
+    mp3: "music/33.mp3",
+  },
+  {
+    song: "CHỈ MUỐN BÊN EM LÚC NÀY",
+    singer: "HUY VẠC ft JIKI X (PROD HƯNG HACK)",
+    avatar: "images/34.jpg",
+    mp3: "music/34.mp3",
+  },
+  {
+    song: "ĐÁM CƯỚI NHA",
+    singer: "HỒNG THANH X MIE",
+    avatar: "images/35.jpg",
+    mp3: "music/35.mp3",
+  },
+  {
+    song: "Enemy",
+    singer: "Imagine Dragons x J.I.D",
+    avatar: "images/36.jpg",
+    mp3: "music/36.mp3",
+  },
+  {
+    song: "THÌ THẦM THÍCH THẢ THÍNH",
+    singer: "LẬP NGUYÊN (ft. NƠ)",
+    avatar: "images/37.jpg",
+    mp3: "music/37.mp3",
+  },
+  {
+    song: "Legends Never Die",
+    singer: "(ft. Against The Current)",
+    avatar: "images/38.jpg",
+    mp3: "music/38.mp3",
+  },
+  {
+    song: "Trip",
+    singer: "Siine ft. Le June",
+    avatar: "images/39.jpg",
+    mp3: "music/39.mp3",
+  },
+  {
+    song: "Yêu Đơn Phương Là Gì Remix",
+    singer: "h0n",
+    avatar: "images/40.jpg",
+    mp3: "music/40.mp3",
+  },
 ];
 
 //1. thêm số 0 vào đằng trước các số 0 đến 9
